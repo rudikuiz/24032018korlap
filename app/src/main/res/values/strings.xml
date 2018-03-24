@@ -38,4 +38,8 @@
     <string name="jmlsur">Jml Survey</string>
     <string name="tanggal">Tanggal</string>
     <string name="nominal">Nominal</string>
+    <string name="detailcol">Detail Collector</string>
+    <string name="col">Collector</string>
+    <string name="sur">Survey</string>
+    <string name="janjibayar">Janji Bayar</string>
 </resources>

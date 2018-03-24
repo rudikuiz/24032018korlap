@@ -28,7 +28,7 @@
             android:layout_marginLeft="10dp"
             android:text="@string/profile"
             android:textColor="@color/white"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
 
@@ -251,7 +251,7 @@
                         android:layout_marginLeft="5dp"
                         android:text="Rp."
                         android:textColor="@color/blue"
-                        android:textSize="15dp" />
+                        android:textSize="15sp" />
 
                     <TextView
                         android:layout_marginRight="5dp"
@@ -262,7 +262,7 @@
                         android:gravity="right"
                         android:text="2.000.000,-"
                         android:textColor="@color/blue"
-                        android:textSize="15dp" />
+                        android:textSize="15sp" />
 
                 </LinearLayout>
 

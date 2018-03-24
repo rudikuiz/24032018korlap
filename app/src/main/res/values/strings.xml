@@ -19,6 +19,13 @@
     <string name="nama">Nama</string>
     <string name="no">No</string>
     <string name="details">Details</string>
+    <string name="detailklien">Detail Klien</string>
+    <string name="alamat">Alamat</string>
+    <string name="nohp">No HP</string>
+    <string name="alamatkantor">Alamat Kantor</string>
+    <string name="telpkantor">Telp Kantor</string>
+    <string name="simpan">Simpan</string>
+    <string name="clientnotes">Client Notes</string>
     <string name="saldo">Saldo</string>
     <string name="tarik_dana">Tarik Dana</string>
     <string name="tarik">Tarik</string>

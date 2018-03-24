@@ -27,7 +27,9 @@
             android:theme="@style/AppTheme." />
         <activity android:name=".menus.DaftarPenagihan" />
         <activity android:name=".menus.DaftarSurvey" />
-        <activity android:name=".menus.DaftarCollector"></activity>
+        <activity android:name=".menus.DaftarCollector" />
+        <activity android:name=".menus.DetailKlient" />
+        <activity android:name=".menus.ClientNotes"></activity>
     </application>
 
 </manifest>

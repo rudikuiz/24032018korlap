@@ -6,4 +6,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="blue">#3869B4</color>
     <color name="whitedark">#f5f5f5</color>
+    <color name="hitamFont">#6E6E6E</color>
+    <color name="button">#58B650</color>
 </resources>

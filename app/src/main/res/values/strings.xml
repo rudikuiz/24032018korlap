@@ -11,4 +11,8 @@
     <string name="totaldaftartag">Total Daftar Penagihan</string>
     <string name="totaldaftarsur">Total Daftar Survey</string>
     <string name="daftardebt">Daftar Collector</string>
+    <string name="status">Status</string>
+    <string name="nama">Nama</string>
+    <string name="no">No</string>
+    <string name="details">Details</string>
 </resources>

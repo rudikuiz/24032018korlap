@@ -7,7 +7,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.piramidsoft.korlap.R;
-import com.piramidsoft.korlap.models.PenagihanModel;
+import com.piramidsoft.korlap.models.ListModel;
 
 import java.util.ArrayList;
 
@@ -21,7 +21,7 @@ public class DaftarPenagihan extends AppCompatActivity {
     SwipeRefreshLayout Swipe;
     @BindView(R.id.rvDaftarPenagihan)
     RecyclerView rvDaftarPenagihan;
-    private ArrayList<PenagihanModel> arrayList = new ArrayList<>();
+    private ArrayList<ListModel> arrayList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

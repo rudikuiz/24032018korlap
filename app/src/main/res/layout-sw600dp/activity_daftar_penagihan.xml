@@ -39,9 +39,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border"
                 android:orientation="horizontal"
-                android:padding="1dp">
+                >
 
                 <TextView
                     android:layout_width="50dp"
@@ -83,6 +82,11 @@
                     android:text="@string/details" />
 
             </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
 
             <android.support.v4.widget.SwipeRefreshLayout
                 android:id="@+id/Swipe"

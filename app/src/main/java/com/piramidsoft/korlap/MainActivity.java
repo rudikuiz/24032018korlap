@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.piramidsoft.korlap.adapters.NavigationBottomAdapter;
+import com.piramidsoft.korlap.fragments.History;
 import com.piramidsoft.korlap.fragments.Home;
 import com.piramidsoft.korlap.fragments.Maps;
 import com.piramidsoft.korlap.fragments.Profile;
@@ -46,6 +47,12 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.lin4)
     LinearLayout lin4;
     NavigationBottomAdapter pagerAdapter;
+    @BindView(R.id.image5)
+    ImageView image5;
+    @BindView(R.id.text5)
+    TextView text5;
+    @BindView(R.id.lin5)
+    LinearLayout lin5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
         pagerAdapter.addFragments(new Home(), "Home");
         pagerAdapter.addFragments(new Profile(), "Profile");
         pagerAdapter.addFragments(new Maps(), "Maps");
+        pagerAdapter.addFragments(new History(), "History");
         vpHome.setAdapter(pagerAdapter);
 
         lin1.setOnClickListener(new View.OnClickListener() {
@@ -88,8 +96,17 @@ public class MainActivity extends AppCompatActivity {
         lin4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                vpHome.setCurrentItem(3);
+
+            }
+        });
+
+        lin5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 Toast.makeText(MainActivity.this, "Logout", Toast.LENGTH_SHORT).show();
             }
         });
+
     }
 }

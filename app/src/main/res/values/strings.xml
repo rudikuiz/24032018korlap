@@ -8,6 +8,7 @@
     <string name="profile">Profile</string>
     <string name="maps">Maps Collector</string>
     <string name="logout">Logout</string>
+    <string name="history">History Penarikan</string>
     <string name="totaldaftartag">Total Daftar Penagihan</string>
     <string name="totaldaftarsur">Total Daftar Survey</string>
     <string name="daftardebt">Daftar Collector</string>
@@ -29,5 +30,7 @@
     <string name="saldo">Saldo</string>
     <string name="tarik_dana">Tarik Dana</string>
     <string name="tarik">Tarik</string>
+    <string name="daftarsurvey">Daftar Survey</string>
+    <string name="notes">Notes</string>
     <string name="title_activity_maps">Map</string>
 </resources>

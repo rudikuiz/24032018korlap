@@ -16,33 +16,31 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
-
  */
 
-public class PenagihanAdapter extends RecyclerView.Adapter<PenagihanAdapter.PenagihanHolder> {
+public class DaftarSurveyAdapter extends RecyclerView.Adapter<DaftarSurveyAdapter.SurveyHolder> {
 
-    private ArrayList<ListModel> arrayList;
+    private ArrayList<ListModel> listModels;
     private Context context;
 
-    public PenagihanAdapter(ArrayList<ListModel> arrayList, Context context) {
-        this.arrayList = arrayList;
+    public DaftarSurveyAdapter(ArrayList<ListModel> listModels, Context context) {
+        this.listModels = listModels;
         this.context = context;
     }
 
     @Override
-    public PenagihanHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public SurveyHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.item_tabel_penagihan, parent, false);
-        return new PenagihanHolder(view);
+        View view = inflater.inflate(R.layout.item_daftar_sruvey, parent, false);
+        return new SurveyHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(PenagihanHolder holder, int position) {
+    public void onBindViewHolder(SurveyHolder holder, int position) {
         int nomer= position +1;
-
         holder.number.setText(String.valueOf(nomer));
-        holder.Nama.setText(arrayList.get(position).getNama());
-        holder.Status.setText(arrayList.get(position).getStatus());
+        holder.Nama.setText(listModels.get(position).getNama());
+        holder.Status.setText(listModels.get(position).getStatus());
         holder.Details.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,10 +51,10 @@ public class PenagihanAdapter extends RecyclerView.Adapter<PenagihanAdapter.Pena
 
     @Override
     public int getItemCount() {
-        return arrayList.size();
+        return listModels.size();
     }
 
-    public class PenagihanHolder extends RecyclerView.ViewHolder {
+    public class SurveyHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.number)
         TextView number;
         @BindView(R.id.Nama)
@@ -66,7 +64,7 @@ public class PenagihanAdapter extends RecyclerView.Adapter<PenagihanAdapter.Pena
         @BindView(R.id.Details)
         TextView Details;
 
-        public PenagihanHolder(View itemView) {
+        public SurveyHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }

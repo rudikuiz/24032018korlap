@@ -255,24 +255,12 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/btNotes"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_marginTop="5dp"
-            android:text="@string/notes"
-            android:textColor="@color/button"
-            android:background="@drawable/md_button_border_ijo"
-            android:layout_alignEnd="@+id/linearLayout"
-            android:layout_below="@+id/linearLayout" />
-
-        <Button
             android:id="@+id/btSimpan"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
             android:background="@drawable/ripple_effect_biru"
             android:text="@string/simpan"
             android:textColor="@color/white"
-            android:layout_below="@+id/btNotes"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:padding="10dp"/>

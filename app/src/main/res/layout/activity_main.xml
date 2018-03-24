@@ -22,7 +22,7 @@
             android:id="@+id/lin1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="0.5"
             android:orientation="vertical"
             android:padding="5dp">
 
@@ -50,7 +50,7 @@
             android:id="@+id/lin2"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="0.5"
             android:orientation="vertical"
             android:padding="5dp">
 
@@ -117,10 +117,39 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
-                android:src="@drawable/keluar" />
+                android:src="@drawable/history" />
 
             <TextView
                 android:id="@+id/text4"
+                android:textSize="12sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/history"
+                android:textColor="@color/colorPrimary" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/lin5"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <ImageView
+                android:id="@+id/image5"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:src="@drawable/keluar" />
+
+            <TextView
+                android:id="@+id/text5"
                 android:textSize="12sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

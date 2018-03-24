@@ -3,13 +3,13 @@ package com.piramidsoft.korlap.models;
 /**
  */
 
-public class PenagihanModel {
+public class ListModel {
     String nama,status;
 
-    public PenagihanModel() {
+    public ListModel() {
     }
 
-    public PenagihanModel(String nama, String status) {
+    public ListModel(String nama, String status) {
         this.nama = nama;
         this.status = status;
     }

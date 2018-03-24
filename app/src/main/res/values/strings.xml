@@ -11,6 +11,10 @@
     <string name="totaldaftartag">Total Daftar Penagihan</string>
     <string name="totaldaftarsur">Total Daftar Survey</string>
     <string name="daftardebt">Daftar Collector</string>
+    <string name="edit">edit</string>
+    <string name="nomor_telepon">Nomor Telepon</string>
+    <string name="alamat_email">Alamat Email</string>
+    <string name="password">Password</string>
     <string name="status">Status</string>
     <string name="nama">Nama</string>
     <string name="no">No</string>

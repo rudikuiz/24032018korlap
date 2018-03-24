@@ -77,7 +77,7 @@
                 android:gravity="center"
                 android:text="Joko Susilo"
                 android:textColor="@color/blue"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <RelativeLayout
@@ -111,6 +111,17 @@
                     android:text="@string/edit"
                     android:textAllCaps="false"
                     android:textColor="@color/blue" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="55dp"
+                    android:background="@android:color/transparent"
+                    android:inputType="textEmailAddress"
+                    android:text="Email.mk@gmail.com"
+                    android:textColor="@android:color/black" />
 
             </RelativeLayout>
 
@@ -158,14 +169,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/alamat_email">
-
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@android:color/transparent"
-                        android:inputType="textEmailAddress"
-                        android:text="Email.mk@gmail.com"
-                        android:textColor="@android:color/black" />
 
                 </android.support.design.widget.TextInputLayout>
 
@@ -232,7 +235,7 @@
                     android:layout_weight="1"
                     android:text="@string/saldo"
                     android:textColor="@android:color/white"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <LinearLayout
@@ -279,7 +282,7 @@
                     android:layout_weight="1"
                     android:text="@string/tarik_dana"
                     android:textColor="@android:color/white"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <LinearLayout
@@ -294,7 +297,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
                         android:text="Rp."
-                        android:textSize="15dp" />
+                        android:textSize="15sp" />
 
                     <EditText
                         android:layout_marginRight="5dp"
@@ -305,7 +308,7 @@
                         android:background="@android:color/transparent"
                         android:gravity="right"
                         android:inputType="number"
-                        android:textSize="15dp" />
+                        android:textSize="15sp" />
 
                 </LinearLayout>
 

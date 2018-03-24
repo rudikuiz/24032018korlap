@@ -33,6 +33,9 @@
     <string name="daftarsurvey">Daftar Survey</string>
     <string name="notes">Notes</string>
     <string name="title_activity_maps">Map</string>
+    <string name="listcol">List Collector</string>
+    <string name="jmlcol">Jml Collect</string>
+    <string name="jmlsur">Jml Survey</string>
     <string name="tanggal">Tanggal</string>
     <string name="nominal">Nominal</string>
 </resources>

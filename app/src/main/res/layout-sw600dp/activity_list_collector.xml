@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context="com.piramidsoft.korlap.menus.DaftarPenagihan">
+    android:orientation="vertical"
+    tools:context="com.piramidsoft.korlap.menus.ListCollector">
 
     <RelativeLayout
         android:id="@+id/rl"
@@ -27,7 +28,7 @@
             android:paddingBottom="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Daftar Pendagihan" />
+            android:text="@string/listcol" />
     </RelativeLayout>
 
         <LinearLayout
@@ -38,14 +39,15 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                >
+                android:orientation="horizontal">
 
                 <TextView
+                    android:textStyle="bold"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
+                    android:layout_gravity="center"
                     android:text="@string/no" />
 
                 <View
@@ -54,8 +56,10 @@
                     android:background="@android:color/darker_gray" />
 
                 <TextView
+                    android:textStyle="bold"
                     android:layout_width="0dp"
-                    android:layout_weight="3"
+                    android:layout_weight="2"
+                    android:layout_gravity="center"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
                     android:text="@string/nama" />
@@ -66,11 +70,13 @@
                     android:background="@android:color/darker_gray" />
 
                 <TextView
+                    android:textStyle="bold"
                     android:layout_width="0dp"
-                    android:layout_weight="3"
+                    android:layout_weight="1"
+                    android:gravity="center"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
-                    android:text="@string/status" />
+                    android:text="@string/jmlcol" />
 
                 <View
                     android:layout_width="1dp"
@@ -78,12 +84,29 @@
                     android:background="@android:color/darker_gray" />
 
                 <TextView
+                    android:textStyle="bold"
                     android:layout_width="0dp"
-                    android:layout_weight="3"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
-                    android:text="@string/details" />
+                    android:text="@string/jmlsur"
+                    android:gravity="center"/>
 
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/darker_gray" />
+
+                <TextView
+                    android:layout_gravity="center"
+                    android:textStyle="bold"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="@string/details"
+                    android:gravity="center"
+                    />
             </LinearLayout>
 
             <View
@@ -99,7 +122,7 @@
                 android:layout_below="@+id/linear">
 
                 <android.support.v7.widget.RecyclerView
-                    android:id="@+id/rvDaftarPenagihan"
+                    android:id="@+id/rvListCollector"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 

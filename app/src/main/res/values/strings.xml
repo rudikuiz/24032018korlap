@@ -1,0 +1,14 @@
+<resources>
+    <string name="daftar">Daftar</string>
+    <string name="sudahpunyakun">Sudah punya Akun?</string>
+    <string name="login">Login</string>
+    <string name="app_name">Korlap</string>
+    <string name="belumpunyaakun">Belum Punya Akun?</string>
+    <string name="home">Home</string>
+    <string name="profile">Profile</string>
+    <string name="maps">Maps Collector</string>
+    <string name="logout">Logout</string>
+    <string name="totaldaftartag">Total Daftar Penagihan</string>
+    <string name="totaldaftarsur">Total Daftar Survey</string>
+    <string name="daftardebt">Daftar Collector</string>
+</resources>

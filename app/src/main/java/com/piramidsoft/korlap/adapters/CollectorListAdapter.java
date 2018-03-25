@@ -1,6 +1,7 @@
 package com.piramidsoft.korlap.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.piramidsoft.korlap.R;
+import com.piramidsoft.korlap.menus.DetailCollector;
 import com.piramidsoft.korlap.models.ListCollectorModel;
 
 import java.util.ArrayList;
@@ -45,7 +47,8 @@ public class CollectorListAdapter extends RecyclerView.Adapter<CollectorListAdap
         holder.etDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+            Intent intent = new Intent(context, DetailCollector.class);
+            context.startActivity(intent);
             }
         });
     }

@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.piramidsoft.korlap.R;
 import com.piramidsoft.korlap.models.ListModel;
@@ -45,7 +46,7 @@ public class CollectionAdapter extends RecyclerView.Adapter<CollectionAdapter.Co
         holder.etJanjiBayar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Toast.makeText(context, "Toast", Toast.LENGTH_SHORT).show();
             }
         });
     }

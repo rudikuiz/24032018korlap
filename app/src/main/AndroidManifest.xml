@@ -8,8 +8,10 @@
          location permissions for the 'MyLocation' functionality.
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".Config.AppController"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -35,11 +37,10 @@
             android:theme="@style/AppTheme." />
         <activity android:name=".menus.DaftarPenagihan" />
         <activity android:name=".menus.DaftarSurvey" />
-        <activity android:name=".menus.DaftarCollector" />
         <activity android:name=".menus.DetailClientPenagihan" />
         <activity android:name=".menus.ClientNotes" />
         <activity android:name=".menus.DetailClientSurvey" />
-        <activity android:name=".menus.ListCollector" />
+        <activity android:name=".menus.DaftarCollector" />
         <activity android:name=".menus.DetailKlient" />
         <activity android:name=".menus.ClientNotes" />
         <!--

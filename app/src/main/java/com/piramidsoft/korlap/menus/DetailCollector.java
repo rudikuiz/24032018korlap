@@ -3,6 +3,7 @@ package com.piramidsoft.korlap.menus;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -34,5 +35,10 @@ public class DetailCollector extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_collector);
         ButterKnife.bind(this);
+
+        GridLayoutManager manager  = new GridLayoutManager(DetailCollector.this, 1,
+                GridLayoutManager.VERTICAL, false);
+        rvCollector.setLayoutManager(manager);
+        rvSurvey.setLayoutManager(manager);
     }
 }

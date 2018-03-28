@@ -5,7 +5,7 @@ package com.piramidsoft.korlap.models;
  */
 
 public class ListCollectorModel {
-    String nama,jmlcol,jmlsur;
+    String nama,jmlcol,jmlsur,kar_id;
 
     public ListCollectorModel() {
     }
@@ -14,6 +14,14 @@ public class ListCollectorModel {
         this.nama = nama;
         this.jmlcol = jmlcol;
         this.jmlsur = jmlsur;
+    }
+
+    public String getKar_id() {
+        return kar_id;
+    }
+
+    public void setKar_id(String kar_id) {
+        this.kar_id = kar_id;
     }
 
     public String getNama() {

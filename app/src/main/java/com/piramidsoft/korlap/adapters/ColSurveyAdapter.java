@@ -1,6 +1,7 @@
 package com.piramidsoft.korlap.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.piramidsoft.korlap.R;
+import com.piramidsoft.korlap.menus.DetailClient;
 import com.piramidsoft.korlap.models.ListModel;
 
 import java.util.ArrayList;
@@ -37,15 +39,18 @@ public class ColSurveyAdapter extends RecyclerView.Adapter<ColSurveyAdapter.ColS
     }
 
     @Override
-    public void onBindViewHolder(ColSurHolder holder, int position) {
+    public void onBindViewHolder(ColSurHolder holder, final int position) {
         int number = position + 1;
-        holder.number.setText(number);
+        holder.number.setText(String.valueOf(number));
         holder.etNama.setText(models.get(position).getNama());
         holder.etStatus.setText(models.get(position).getStatus());
         holder.etJanjiBayar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(context, DetailClient.class);
+                intent.putExtra("cli_id", models.get(position).getCli_id());
 
+                context.startActivity(intent);
             }
         });
     }

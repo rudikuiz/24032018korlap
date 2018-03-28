@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.piramidsoft.korlap.R;
+import com.piramidsoft.korlap.models.CatatanModel;
 import com.piramidsoft.korlap.models.NotesModel;
 
 import java.util.ArrayList;
@@ -21,10 +22,10 @@ import butterknife.ButterKnife;
 
 public class ClientNotesAdapter extends RecyclerView.Adapter<ClientNotesAdapter.NotesHolder> {
 
-    private ArrayList<NotesModel> arrayList;
+    private ArrayList<CatatanModel> arrayList;
     private Context context;
 
-    public ClientNotesAdapter(ArrayList<NotesModel> arrayList, Context context) {
+    public ClientNotesAdapter(ArrayList<CatatanModel> arrayList, Context context) {
         this.arrayList = arrayList;
         this.context = context;
     }
@@ -38,8 +39,8 @@ public class ClientNotesAdapter extends RecyclerView.Adapter<ClientNotesAdapter.
 
     @Override
     public void onBindViewHolder(NotesHolder holder, int position) {
-        holder.etTanggal.setText(arrayList.get(position).getTgl());
-        holder.etKet.setText(arrayList.get(position).getNotes());
+        holder.etTanggal.setText(arrayList.get(position).getTxtTanggal());
+        holder.etKet.setText(arrayList.get(position).getXxx());
     }
 
     @Override

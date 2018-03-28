@@ -8,7 +8,8 @@ import static com.piramidsoft.korlap.Config.http.URLHTTP;
  */
 
 public class AppConf {
-    public static final String URL_GET_ALL = URLHTTP+"view.php?pengajuan_assigned_to=";
+//    public static final String URL_GET_ALL = URLHTTP+"view.php?pengajuan_assigned_to=";
+    public static final String URL_GET_ALL = "http://118.98.64.44/korlap/view_daftar_penagihan.php?member_id_karyawan=";
     public static final String URL_GET_DETAIL = URLHTTP+"perdata.php?cli_id=";
     public static final String URL_POST_KARYAWAN = URLHTTP+"insert_karyawan.php";
     public static final String URL_POST_MEMBERSYSTEM = URLHTTP+"insert_membersystem.php";
@@ -24,7 +25,8 @@ public class AppConf {
     public static final String URL_POST_DATA_KUNJUNGAN = URLHTTP+"data_kunjungan.php?id_pengajuan=";
     public static final String URL_GET_ID_PENGAJUAN = URLHTTP+"select_id_pengajuan.php?pengajuan_id_client=";
     public static final String URL_GET_ID_MEMBER = URLHTTP +"getMember_idkaryawan.php?kar_namalengkap=";
-    public static final String URL_LOGIN = URLHTTP +"login.php";
+    //    public static final String URL_LOGIN = URLHTTP +"login.php";
+    public static final String URL_LOGIN = "http://118.98.64.44/korlap/login.php";
     public static final String URL_MEMBER_ID_KARYAWAN = URLHTTP +"getMemberIDUser.php?member_id=";
     public static final String URL_GET_IMAGE_FROM_FOLDER = "http://hq.ppgwinwin.com/winwin/home/uploads/";
     public static final String URL_UPDATE_PROFIL_TRIAL = "http://winwinujicobaadmin.tamboraagungmakmur.com/debt_collector/update_profile.php";

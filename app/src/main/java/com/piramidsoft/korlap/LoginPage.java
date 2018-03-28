@@ -1,6 +1,5 @@
 package com.piramidsoft.korlap;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -63,10 +62,10 @@ public class LoginPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_page);
         ButterKnife.bind(this);
+        loading = new OwnProgressDialog(LoginPage.this);
         cekInternet();
-        // Cek session login jika TRUE maka langsung buka MainActivity
-        cekSession();
 
+        cekSession();
     }
 
     private void cekSession() {
@@ -76,7 +75,7 @@ public class LoginPage extends AppCompatActivity {
         username = sharedpreferences.getString(TAG_USERNAME, null);
 
         if (session) {
-            Intent intent = new Intent(LoginPage.this, LoginPage.class);
+            Intent intent = new Intent(LoginPage.this, MainActivity.class);
             intent.putExtra(TAG_ID, id);
             intent.putExtra(TAG_USERNAME, username);
             finish();
@@ -132,7 +131,7 @@ public class LoginPage extends AppCompatActivity {
                         editor.commit();
 
                         // Memanggil main activity
-                        Intent intent = new Intent(LoginPage.this, LoginPage.class);
+                        Intent intent = new Intent(LoginPage.this, MainActivity.class);
                         intent.putExtra(TAG_ID, id);
                         intent.putExtra(TAG_USERNAME, username);
                         finish();
@@ -200,5 +199,7 @@ public class LoginPage extends AppCompatActivity {
             // Prompt user to enter credentials
             Toast.makeText(getApplicationContext(), "Kolom tidak boleh kosong", Toast.LENGTH_LONG).show();
         }
+
+//        startActivity(new Intent(LoginPage.this, MainActivity.class));
     }
 }

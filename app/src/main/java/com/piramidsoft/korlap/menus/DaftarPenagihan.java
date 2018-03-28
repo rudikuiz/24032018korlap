@@ -1,5 +1,7 @@
 package com.piramidsoft.korlap.menus;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -16,6 +18,7 @@ import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.piramidsoft.korlap.LoginPage;
 import com.piramidsoft.korlap.R;
 import com.piramidsoft.korlap.Setting.OwnProgressDialog;
 import com.piramidsoft.korlap.adapters.PenagihanAdapter;
@@ -31,6 +34,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 import static com.piramidsoft.korlap.Config.AppConf.URL_GET_ALL;
+import static com.piramidsoft.korlap.Config.http.TAG_ID;
+import static com.piramidsoft.korlap.Config.http.TAG_MEMBER_ID_KARYAWAN;
 
 public class DaftarPenagihan extends AppCompatActivity {
 
@@ -42,14 +47,18 @@ public class DaftarPenagihan extends AppCompatActivity {
     private ArrayList<ListModel> arrayList = new ArrayList<>();
     RequestQueue requestQueue;
     StringRequest stringRequest;
-
+    SharedPreferences sharedpreferences;
     OwnProgressDialog loading;
+    String id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daftar_penagihan);
         ButterKnife.bind(this);
         rvDaftarPenagihan.setHasFixedSize(true);
+
+        sharedpreferences = getSharedPreferences(LoginPage.my_shared_preferences, Context.MODE_PRIVATE);
+        id = sharedpreferences.getString(TAG_MEMBER_ID_KARYAWAN, "");
 
         GridLayoutManager layoutManager = new GridLayoutManager(DaftarPenagihan.this, 1,
                 GridLayoutManager.VERTICAL, false);
@@ -64,27 +73,30 @@ public class DaftarPenagihan extends AppCompatActivity {
             @Override
             public void onRefresh() {
                 getJSON();
+//                getStatis();
             }
         });
+//        getStatis();
         getJSON();
     }
 
     private void getJSON() {
 
         arrayList = new ArrayList<ListModel>();
-
-        stringRequest = new StringRequest(Request.Method.GET, URL_GET_ALL + "nothing", new Response.Listener<String>() {
+        stringRequest = new StringRequest(Request.Method.GET, URL_GET_ALL + id, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Log.d("response: ", response);
                 try {
-                    JSONArray jsonArray = new JSONArray(response);
+                    JSONObject jsonObject = new JSONObject(response);
+                    JSONArray jsonArray = jsonObject.getJSONArray("data");
                     for (int a = 0; a < jsonArray.length(); a++) {
                         JSONObject json = jsonArray.getJSONObject(a);
                         ListModel modelMenu = new ListModel();
-                        modelMenu.setNama(json.getString("number"));
-                        modelMenu.setStatus(json.getString("cli_id"));
-
+                        modelMenu.setNama(json.getString("cli_nama_lengkap"));
+                        modelMenu.setStatus(json.getString("pengajuan_status"));
+                        modelMenu.setCli_id(json.getString("cli_id"));
+                        modelMenu.setPengajuan_id(json.getString("pengajuan_id"));
                         arrayList.add(modelMenu);
                     }
 
@@ -117,4 +129,5 @@ public class DaftarPenagihan extends AppCompatActivity {
         });
         requestQueue.add(stringRequest);
     }
+
 }

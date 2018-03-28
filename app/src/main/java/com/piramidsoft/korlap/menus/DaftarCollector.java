@@ -1,5 +1,7 @@
 package com.piramidsoft.korlap.menus;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -16,6 +18,7 @@ import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.piramidsoft.korlap.LoginPage;
 import com.piramidsoft.korlap.R;
 import com.piramidsoft.korlap.Setting.OwnProgressDialog;
 import com.piramidsoft.korlap.adapters.CollectorListAdapter;
@@ -30,7 +33,7 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-import static com.piramidsoft.korlap.Config.AppConf.URL_GET_ALL;
+import static com.piramidsoft.korlap.Config.http.TAG_MEMBER_ID_KARYAWAN;
 
 public class DaftarCollector extends AppCompatActivity {
 
@@ -42,12 +45,16 @@ public class DaftarCollector extends AppCompatActivity {
     RequestQueue requestQueue;
     StringRequest stringRequest;
     OwnProgressDialog loading;
-
+    SharedPreferences sharedpreferences;
+    String iduser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_collector);
         ButterKnife.bind(this);
+
+        sharedpreferences = getSharedPreferences(LoginPage.my_shared_preferences, Context.MODE_PRIVATE);
+        iduser = sharedpreferences.getString(TAG_MEMBER_ID_KARYAWAN, "");
 
         GridLayoutManager layoutManager = new GridLayoutManager(DaftarCollector.this, 1,
                 GridLayoutManager.VERTICAL, false);
@@ -65,13 +72,16 @@ public class DaftarCollector extends AppCompatActivity {
             }
         });
         getJSON();
+
+//        Log.d("adsg", "http://118.98.64.44/korlap/view_daftar_collector.php" + "?member_id_karyawan=" + iduser);
+//        getStatis();
     }
 
     private void getJSON() {
 
         arrayList = new ArrayList<ListCollectorModel>();
 
-        stringRequest = new StringRequest(Request.Method.GET, URL_GET_ALL + "nothing", new Response.Listener<String>() {
+        stringRequest = new StringRequest(Request.Method.GET, "http://118.98.64.44/korlap/view_daftar_collector.php" + "?member_id_karyawan=" + iduser, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Log.d("response: ", response);
@@ -80,9 +90,10 @@ public class DaftarCollector extends AppCompatActivity {
                     for (int a = 0; a < jsonArray.length(); a++) {
                         JSONObject json = jsonArray.getJSONObject(a);
                         ListCollectorModel modelMenu = new ListCollectorModel();
-                        modelMenu.setNama(json.getString("nama"));
-                        modelMenu.setJmlcol(json.getString("jmlcol"));
-                        modelMenu.setJmlsur(json.getString("jmlsur"));
+                        modelMenu.setNama(json.getString("kar_namalengkap"));
+                        modelMenu.setJmlcol(json.getString("jumlah_collect"));
+                        modelMenu.setJmlsur(json.getString("jumlah_survey"));
+                        modelMenu.setKar_id(json.getString("kar_id"));
                         arrayList.add(modelMenu);
                     }
 
@@ -114,5 +125,14 @@ public class DaftarCollector extends AppCompatActivity {
             }
         });
         requestQueue.add(stringRequest);
+    }
+
+    private void getStatis() {
+        CollectorListAdapter adapter = new CollectorListAdapter(arrayList, DaftarCollector.this);
+        rvListCollector.setAdapter(adapter);
+
+        arrayList.add(new ListCollectorModel("Saudah", "23", "2"));
+        arrayList.add(new ListCollectorModel("Alex", "13", "1"));
+        arrayList.add(new ListCollectorModel("Anhar", "9", "3"));
     }
 }

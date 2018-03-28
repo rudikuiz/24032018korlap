@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.">
         <activity
-            android:name=".MainActivity"
+            android:name=".LoginPage"
             android:theme="@style/AppTheme.">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,19 +23,31 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LoginPage"
+            android:name=".MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme." />
         <activity
             android:name=".SplashSCreen"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme." />
-        <activity android:name=".menus.DaftarPenagihan" />
-        <activity android:name=".menus.DaftarSurvey" />
-        <activity android:name=".menus.DetailClientPenagihan" />
-        <activity android:name=".menus.ClientNotes" />
-        <activity android:name=".menus.DetailClientSurvey" />
-        <activity android:name=".menus.DaftarCollector" />
+        <activity
+            android:name=".menus.DaftarPenagihan"
+            android:theme="@style/AppTheme." />
+        <activity
+            android:name=".menus.DaftarSurvey"
+            android:theme="@style/AppTheme." />
+        <activity
+            android:name=".menus.DetailClientPenagihan"
+            android:theme="@style/AppTheme." />
+        <activity
+            android:name=".menus.ClientNotes"
+            android:theme="@style/AppTheme." />
+        <activity
+            android:name=".menus.DetailClientSurvey"
+            android:theme="@style/AppTheme." />
+        <activity
+            android:name=".menus.DaftarCollector"
+            android:theme="@style/AppTheme." />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -51,7 +63,8 @@
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" />
-        <activity android:name=".menus.DetailCollector"/>
+        <activity android:name=".menus.DetailCollector" />
+        <activity android:name=".menus.DetailClient"></activity>
     </application>
 
 </manifest>

@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.piramidsoft.korlap.fragments.Home">
-
     <RelativeLayout
         android:id="@+id/rl"
         android:layout_width="match_parent"
@@ -49,136 +48,150 @@
             android:src="@drawable/t_avar" />
     </RelativeLayout>
 
-    <LinearLayout
-        android:id="@+id/btDaftarPenagihan"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/refreshlayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
-        android:layout_marginTop="50dp"
-        android:background="@drawable/md_biru"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:gravity="center">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/t_total"
-                android:layout_width="0dp"
+            <LinearLayout
+                android:id="@+id/btDaftarPenagihan"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:layout_weight="4"
-                android:padding="5dp"
-                android:text="@string/totaldaftartag"
-                android:textColor="@color/white"
-                android:textSize="17sp"
-                android:textStyle="bold" />
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginTop="50dp"
+                android:background="@drawable/md_biru"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/etJmlDP"
-                android:layout_width="0dp"
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/t_total"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:layout_weight="4"
+                        android:padding="5dp"
+                        android:text="@string/totaldaftartag"
+                        android:textColor="@color/white"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/etJmlDP"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/md_putih"
+                        android:padding="5dp"
+                        android:text="0"
+                        android:textAlignment="center"
+                        android:textColor="@color/blue"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/btTotalSurvey"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:layout_weight="1"
-                android:background="@drawable/md_putih"
-                android:padding="5dp"
-                android:text="12"
-                android:textAlignment="center"
-                android:textColor="@color/blue"
-                android:textSize="17sp"
-                android:textStyle="bold" />
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/md_biru"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:layout_weight="4"
+                        android:padding="5dp"
+                        android:text="@string/totaldaftarsur"
+                        android:textColor="@color/white"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/etJmlDS"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/md_putih"
+                        android:padding="5dp"
+                        android:text="0"
+                        android:textAlignment="center"
+                        android:textColor="@color/blue"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/btDaftarCol"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/md_biru"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:layout_weight="4"
+                        android:padding="5dp"
+                        android:text="@string/daftardebt"
+                        android:textColor="@color/white"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/etDaftarCol"
+                        android:layout_width="0dp"
+                        android:layout_height="35dp"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/md_putih"
+                        android:padding="5dp"
+                        android:src="@drawable/icon_win_2"
+                        android:textAlignment="center"
+                        android:textColor="@color/blue"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+            </LinearLayout>
         </LinearLayout>
 
-    </LinearLayout>
+    </android.support.v4.widget.SwipeRefreshLayout>
 
-    <LinearLayout
-        android:id="@+id/btTotalSurvey"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/md_biru"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:gravity="center">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:layout_weight="4"
-                android:padding="5dp"
-                android:text="@string/totaldaftarsur"
-                android:textColor="@color/white"
-                android:textSize="17sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/etJmlDS"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:layout_weight="1"
-                android:background="@drawable/md_putih"
-                android:padding="5dp"
-                android:text="12"
-                android:textAlignment="center"
-                android:textColor="@color/blue"
-                android:textSize="17sp"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/btDaftarCol"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/md_biru"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:gravity="center">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:layout_weight="4"
-                android:padding="5dp"
-                android:text="@string/daftardebt"
-                android:textColor="@color/white"
-                android:textSize="17sp"
-                android:textStyle="bold" />
-
-            <ImageView
-                android:id="@+id/etDaftarCol"
-                android:layout_width="0dp"
-                android:layout_height="35dp"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:background="@drawable/md_putih"
-                android:padding="5dp"
-                android:src="@drawable/icon_win_2"
-                android:textAlignment="center"
-                android:textColor="@color/blue"
-                android:textSize="17sp"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-    </LinearLayout>
 </LinearLayout>

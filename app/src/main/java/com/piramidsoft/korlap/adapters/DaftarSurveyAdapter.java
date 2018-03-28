@@ -38,7 +38,7 @@ public class DaftarSurveyAdapter extends RecyclerView.Adapter<DaftarSurveyAdapte
     }
 
     @Override
-    public void onBindViewHolder(SurveyHolder holder, int position) {
+    public void onBindViewHolder(SurveyHolder holder, final int position) {
         int nomer= position +1;
         holder.number.setText(String.valueOf(nomer));
         holder.Nama.setText(listModels.get(position).getNama());
@@ -47,6 +47,8 @@ public class DaftarSurveyAdapter extends RecyclerView.Adapter<DaftarSurveyAdapte
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, DetailClientSurvey.class);
+                intent.putExtra("cli_id", listModels.get(position).getCli_id());
+                intent.putExtra("pengajuan_id", listModels.get(position).getPengajuan_id());
                 context.startActivity(intent);
             }
         });

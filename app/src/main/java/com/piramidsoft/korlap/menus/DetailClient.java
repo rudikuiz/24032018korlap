@@ -2,18 +2,12 @@ package com.piramidsoft.korlap.menus;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,11 +23,9 @@ import com.android.volley.toolbox.Volley;
 import com.bogdwellers.pinchtozoom.ImageMatrixTouchHandler;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.piramidsoft.korlap.LoginPage;
 import com.piramidsoft.korlap.R;
 import com.piramidsoft.korlap.Setting.OwnProgressDialog;
 import com.piramidsoft.korlap.models.ClientModel;
-import com.piramidsoft.korlap.models.ListKaryawan;
 import com.piramidsoft.korlap.models.UrlModel;
 
 import org.json.JSONArray;
@@ -41,21 +33,15 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 import static com.piramidsoft.korlap.Config.AppConf.URL_GET_IMAGE;
 import static com.piramidsoft.korlap.Config.AppConf.URL_GET_IMAGE_FROM_FOLDER;
-import static com.piramidsoft.korlap.Config.http.TAG_MEMBER_ID_KARYAWAN;
 
-public class DetailClientSurvey extends AppCompatActivity {
+public class DetailClient extends AppCompatActivity {
 
-    @BindView(R.id.ImgKtp)
-    ImageView ImgKtp;
     @BindView(R.id.etNama)
     TextView etNama;
     @BindView(R.id.etAlamat)
@@ -66,72 +52,45 @@ public class DetailClientSurvey extends AppCompatActivity {
     TextView etAlamatKantor;
     @BindView(R.id.etTelpKantor)
     TextView etTelpKantor;
-    @BindView(R.id.spinCol)
-    Spinner spinCol;
-    @BindView(R.id.btSimpan)
-    Button btSimpan;
     @BindView(R.id.swipeKlienSurvey)
     SwipeRefreshLayout swipeKlienSurvey;
+    @BindView(R.id.ImgKtp)
+    ImageView ImgKtp;
     private OwnProgressDialog progressDialog;
     private RequestQueue requestQueue;
     private StringRequest stringRequest;
     private final int MY_SOCKET_TIMEOUT_MS = 10 * 1000;
     String id, urlKtp, idKar, id_pengajuan, iduser;
     private ArrayList<UrlModel> ktp = new ArrayList<>();
-    private ArrayList<ListKaryawan> listKaryawans = new ArrayList<>();
-    private static final String TAG_SUCCESS = "success";
-    private static final String TAG_MESSAGE = "message";
-    SharedPreferences sharedpreferences;
-    final ArrayList<String> karyawanname = new ArrayList<>();
-    final ArrayList<String> karyawanid = new ArrayList<>();
     ConnectivityManager conMgr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_daftar_client_survey);
+        setContentView(R.layout.activity_detail_client);
         ButterKnife.bind(this);
-
-        cekInternet();
-
-        sharedpreferences = getSharedPreferences(LoginPage.my_shared_preferences, Context.MODE_PRIVATE);
-        iduser = sharedpreferences.getString(TAG_MEMBER_ID_KARYAWAN, "");
-
-        progressDialog = new OwnProgressDialog(DetailClientSurvey.this);
-        requestQueue = Volley.newRequestQueue(DetailClientSurvey.this);
-        ImgKtp.setOnTouchListener(new ImageMatrixTouchHandler(DetailClientSurvey.this));
+        requestQueue = Volley.newRequestQueue(DetailClient.this);
+        ImgKtp.setOnTouchListener(new ImageMatrixTouchHandler(DetailClient.this));
         Intent intent = getIntent();
         id = intent.getStringExtra("cli_id");
         id_pengajuan = intent.getStringExtra("pengajuan_id");
+        progressDialog = new OwnProgressDialog(DetailClient.this);
 
-        load();
-        viewKtpDialog();
-        setSpinCol();
+        progressDialog.show();
 
         swipeKlienSurvey.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+                cekInternet();
                 load();
                 viewKtpDialog();
-                setSpinCol();
             }
         });
+        cekInternet();
+        load();
+        viewKtpDialog();
 
-        spinCol.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-                idKar = karyawanid.get(position);
-//                Log.d("KARID", idKar);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
     }
-
 
     private void cekInternet() {
         conMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -188,9 +147,9 @@ public class DetailClientSurvey extends AppCompatActivity {
                     swipeKlienSurvey.setRefreshing(false);
                 }
                 if (error instanceof TimeoutError) {
-                    Toast.makeText(DetailClientSurvey.this, "timeout", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DetailClient.this, "timeout", Toast.LENGTH_SHORT).show();
                 } else if (error instanceof NoConnectionError) {
-                    Toast.makeText(DetailClientSurvey.this, "no connection", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DetailClient.this, "no connection", Toast.LENGTH_SHORT).show();
                 }
                 Toast.makeText(getApplicationContext(),
                         error.getMessage(), Toast.LENGTH_LONG).show();
@@ -225,7 +184,7 @@ public class DetailClientSurvey extends AppCompatActivity {
                         Log.d("hasilurl", urlKtp);
 
                         if (urlKtp != null) {
-                            Glide.with(DetailClientSurvey.this).load(urlKtp)
+                            Glide.with(DetailClient.this).load(urlKtp)
                                     .crossFade()
                                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                                     .into(ImgKtp);
@@ -257,126 +216,5 @@ public class DetailClientSurvey extends AppCompatActivity {
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         requestQueue.add(stringRequest);
-    }
-
-    private void AddClient() {
-        StringRequest strReq = new StringRequest(Request.Method.POST, "http://118.98.64.44/korlap/add_penagihan_survey.php", new Response.Listener<String>() {
-
-            @Override
-            public void onResponse(String response) {
-                Toast.makeText(DetailClientSurvey.this, "Berhasil Di Input Ke database", Toast.LENGTH_SHORT).show();
-                finish();
-                try {
-                    final JSONObject jObj = new JSONObject(response.toString());
-                    if (response.equals("Berhasil")) {
-                        Toast.makeText(DetailClientSurvey.this, "Berhasil Di Input Ke database", Toast.LENGTH_SHORT).show();
-                        finish();
-
-                    } else {
-                        Toast.makeText(DetailClientSurvey.this,
-                                jObj.getString(TAG_MESSAGE), Toast.LENGTH_LONG).show();
-
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                if (swipeKlienSurvey != null) {
-                    swipeKlienSurvey.setRefreshing(false);
-                }
-            }
-        }, new Response.ErrorListener() {
-
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.d("Error: ", error.getMessage());
-                Toast.makeText(getApplicationContext(),
-                        error.getMessage(), Toast.LENGTH_LONG).show();
-
-                finish();
-                if (swipeKlienSurvey != null) {
-                    swipeKlienSurvey.setRefreshing(false);
-                }
-            }
-        }) {
-
-            @Override
-            protected Map<String, String> getParams() {
-
-                Map<String, String> params = new HashMap<String, String>();
-                params.put("pengajuan_id", id_pengajuan);
-                params.put("pengajuan_assigned_to", idKar);
-
-                return params;
-            }
-
-        };
-        requestQueue.add(strReq);
-    }
-
-    private void setSpinCol() {
-
-        stringRequest = new StringRequest(Request.Method.GET, "http://118.98.64.44/korlap/view_daftar_collector.php" + "?member_id_karyawan=" + iduser, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                try {
-
-                    JSONArray jsonArray = new JSONArray(response);
-                    for (int a = 0; a < jsonArray.length(); a++) {
-                        JSONObject json = jsonArray.getJSONObject(a);
-                        karyawanname.add(json.optString("kar_namalengkap"));
-                        karyawanid.add(json.optString("kar_id"));
-                    }
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-
-                spinCol.setAdapter(new ArrayAdapter<String>(DetailClientSurvey.this,
-                        R.layout.custom_spinner,
-                        karyawanname));
-
-                progressDialog.dismiss();
-                if (swipeKlienSurvey != null) {
-                    swipeKlienSurvey.setRefreshing(false);
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                progressDialog.dismiss();
-                if (swipeKlienSurvey != null) {
-                    swipeKlienSurvey.setRefreshing(false);
-                }
-                if (error instanceof TimeoutError) {
-                    Toast.makeText(DetailClientSurvey.this, "timeout", Toast.LENGTH_SHORT).show();
-                } else if (error instanceof NoConnectionError) {
-                    Toast.makeText(DetailClientSurvey.this, "no connection", Toast.LENGTH_SHORT).show();
-                }
-                Toast.makeText(getApplicationContext(),
-                        error.getMessage(), Toast.LENGTH_LONG).show();
-
-            }
-        });
-
-        stringRequest.setRetryPolicy(new DefaultRetryPolicy(
-                MY_SOCKET_TIMEOUT_MS,
-                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        requestQueue.add(stringRequest);
-
-
-    }
-
-    @OnClick(R.id.btSimpan)
-    public void onViewClicked() {
-        if (conMgr.getActiveNetworkInfo() != null
-                && conMgr.getActiveNetworkInfo().isAvailable()
-                && conMgr.getActiveNetworkInfo().isConnected()) {
-            AddClient();
-
-        } else {
-            Toast.makeText(DetailClientSurvey.this, "No Internet Connection", Toast.LENGTH_SHORT).show();
-        }
     }
 }

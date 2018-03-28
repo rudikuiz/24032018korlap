@@ -1,5 +1,7 @@
 package com.piramidsoft.korlap.menus;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -16,6 +18,7 @@ import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.piramidsoft.korlap.LoginPage;
 import com.piramidsoft.korlap.R;
 import com.piramidsoft.korlap.Setting.OwnProgressDialog;
 import com.piramidsoft.korlap.adapters.DaftarSurveyAdapter;
@@ -32,6 +35,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 import static com.piramidsoft.korlap.Config.AppConf.URL_GET_ALL;
+import static com.piramidsoft.korlap.Config.http.TAG_MEMBER_ID_KARYAWAN;
+import static com.piramidsoft.korlap.Config.http.TAG_PENGAJUAN_ID;
 
 public class DaftarSurvey extends AppCompatActivity {
 
@@ -42,9 +47,9 @@ public class DaftarSurvey extends AppCompatActivity {
     private ArrayList<ListModel> listModels = new ArrayList<>();
     RequestQueue requestQueue;
     StringRequest stringRequest;
-
+    SharedPreferences sharedpreferences;
     OwnProgressDialog loading;
-
+    String id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +60,8 @@ public class DaftarSurvey extends AppCompatActivity {
         GridLayoutManager layoutManager = new GridLayoutManager(DaftarSurvey.this, 1,
                 GridLayoutManager.VERTICAL, false);
         rvDaftarSurvey.setLayoutManager(layoutManager);
-
+        sharedpreferences = getSharedPreferences(LoginPage.my_shared_preferences, Context.MODE_PRIVATE);
+        id = sharedpreferences.getString(TAG_MEMBER_ID_KARYAWAN, "");
         requestQueue = Volley.newRequestQueue(DaftarSurvey.this);
 
         loading = new OwnProgressDialog(DaftarSurvey.this);
@@ -65,26 +71,30 @@ public class DaftarSurvey extends AppCompatActivity {
             @Override
             public void onRefresh() {
                 getJSON();
+
             }
         });
         getJSON();
+
     }
 
     private void getJSON() {
 
         listModels = new ArrayList<ListModel>();
-
-        stringRequest = new StringRequest(Request.Method.GET, URL_GET_ALL + "nothing", new Response.Listener<String>() {
+        stringRequest = new StringRequest(Request.Method.GET, "http://118.98.64.44/korlap/view_daftar_survey.php?member_id_karyawan=" + id, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Log.d("response: ", response);
                 try {
-                    JSONArray jsonArray = new JSONArray(response);
+                    JSONObject jsonObject = new JSONObject(response);
+                    JSONArray jsonArray = jsonObject.getJSONArray("data");
                     for (int a = 0; a < jsonArray.length(); a++) {
                         JSONObject json = jsonArray.getJSONObject(a);
                         ListModel modelMenu = new ListModel();
-                        modelMenu.setNama(json.getString("number"));
-                        modelMenu.setStatus(json.getString("cli_id"));
+                        modelMenu.setNama(json.getString("cli_nama_lengkap"));
+                        modelMenu.setStatus(json.getString("pengajuan_status"));
+                        modelMenu.setCli_id(json.getString("cli_id"));
+                        modelMenu.setPengajuan_id(json.getString("pengajuan_id"));
 
                         listModels.add(modelMenu);
                     }
@@ -118,4 +128,6 @@ public class DaftarSurvey extends AppCompatActivity {
         });
         requestQueue.add(stringRequest);
     }
+
+
 }

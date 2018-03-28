@@ -15,6 +15,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:padding="10dp"
+            android:gravity="center"
            />
 
         <View
@@ -23,6 +24,7 @@
             android:background="@android:color/darker_gray" />
 
         <TextView
+            android:gravity="center"
             android:id="@+id/etNama"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -36,6 +38,7 @@
             android:background="@android:color/darker_gray" />
 
         <TextView
+            android:gravity="center"
             android:id="@+id/etStatus"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -49,6 +52,7 @@
             android:background="@android:color/darker_gray" />
 
         <TextView
+            android:gravity="center"
             android:id="@+id/etJanjiBayar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

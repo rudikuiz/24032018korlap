@@ -42,4 +42,5 @@
     <string name="col">Collector</string>
     <string name="sur">Survey</string>
     <string name="janjibayar">Janji Bayar</string>
+    <string name="batal">Batal</string>
 </resources>

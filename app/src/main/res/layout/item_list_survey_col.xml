@@ -13,7 +13,7 @@
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:text="@string/no" />
+            android:gravity="center" />
 
         <View
             android:layout_width="1dp"
@@ -25,7 +25,7 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:text="@string/nama" />
+            android:gravity="center" />
 
         <View
             android:layout_width="1dp"
@@ -37,7 +37,7 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:text="@string/status" />
+            android:gravity="center" />
 
         <View
             android:layout_width="1dp"
@@ -50,7 +50,8 @@
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:textColor="@color/blue"
-            android:text="@string/details" />
+            android:gravity="center"
+            android:text="@string/details"/>
 
     </LinearLayout>
 

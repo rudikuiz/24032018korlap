@@ -34,306 +34,343 @@
 
     </RelativeLayout>
 
-
-    <ScrollView
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/Swipe"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="none">
+        android:layout_height="wrap_content">
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_marginTop="10dp"
-            android:orientation="vertical">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/imgFoto"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_centerHorizontal="true"
-                    android:src="@drawable/avatar" />
-
-                <ImageButton
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_below="@+id/imgFoto"
-                    android:layout_marginLeft="-40dp"
-                    android:layout_marginTop="-45dp"
-                    android:layout_toRightOf="@+id/imgFoto"
-                    android:background="@android:color/transparent"
-                    android:src="@drawable/ic_kamera" />
-
-            </RelativeLayout>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="Joko Susilo"
-                android:textColor="@color/blue"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp">
-
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/nama">
-
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@android:color/transparent"
-                        android:inputType="textPersonName"
-                        android:text="Joso Susilo"
-                        android:textColor="@android:color/black" />
-
-                </android.support.design.widget.TextInputLayout>
-
-                <Button
-                    android:id="@+id/btEditNama"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:background="@android:color/transparent"
-                    android:minHeight="10dp"
-                    android:minWidth="50dp"
-                    android:text="@string/edit"
-                    android:textAllCaps="false"
-                    android:textColor="@color/blue" />
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginTop="55dp"
-                    android:background="@android:color/transparent"
-                    android:inputType="textEmailAddress"
-                    android:text="Email.mk@gmail.com"
-                    android:textColor="@android:color/black" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp">
-
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/nomor_telepon">
-
-                    <EditText
-                        android:id="@+id/etNoTelp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@android:color/transparent"
-                        android:inputType="phone"
-                        android:text="08123456789"
-                        android:textColor="@android:color/black" />
-
-                </android.support.design.widget.TextInputLayout>
-
-                <Button
-                    android:id="@+id/btEditNoTelp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:background="@android:color/transparent"
-                    android:minHeight="10dp"
-                    android:minWidth="50dp"
-                    android:text="@string/edit"
-                    android:textAllCaps="false"
-                    android:textColor="@color/blue" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp">
-
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/alamat_email">
-
-                </android.support.design.widget.TextInputLayout>
-
-                <Button
-                    android:id="@+id/btEditEmail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:background="@android:color/transparent"
-                    android:minHeight="10dp"
-                    android:minWidth="50dp"
-                    android:text="@string/edit"
-                    android:textAllCaps="false"
-                    android:textColor="@color/blue" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp">
-
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/password">
-
-                    <EditText
-                        android:id="@+id/etPassword"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@android:color/transparent"
-                        android:inputType="textPassword"
-                        android:text="tests"
-                        android:textColor="@android:color/black" />
-
-                </android.support.design.widget.TextInputLayout>
-
-                <Button
-                    android:id="@+id/btPassword"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:background="@android:color/transparent"
-                    android:minHeight="10dp"
-                    android:minWidth="50dp"
-                    android:text="@string/edit"
-                    android:textAllCaps="false"
-                    android:textColor="@color/blue" />
-
-            </RelativeLayout>
+            android:layout_height="match_parent"
+            android:scrollbars="none">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/rounded_bg_biru"
-                android:orientation="horizontal"
-                android:padding="15dp">
+                android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/saldo"
-                    android:textColor="@android:color/white"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@drawable/rounded_bg_putih"
-                    android:padding="5dp">
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/imgFoto"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_centerHorizontal="true"
+                        android:src="@drawable/avatar" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:text="Rp."
-                        android:textColor="@color/blue"
-                        android:textSize="15sp" />
-
-                    <TextView
-                        android:layout_marginRight="5dp"
-                        android:id="@+id/txSaldo"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="right"
-                        android:text="2.000.000,-"
-                        android:textColor="@color/blue"
-                        android:textSize="15sp" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/rounded_bg_biru"
-                android:orientation="horizontal"
-                android:padding="15dp">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/tarik_dana"
-                    android:textColor="@android:color/white"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@drawable/rounded_bg_putih"
-                    android:padding="5dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:text="Rp."
-                        android:textSize="15sp" />
-
-                    <EditText
-                        android:layout_marginRight="5dp"
-                        android:id="@+id/etTarikDana"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                    <ImageButton
+                        android:id="@+id/btCamera"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_below="@+id/imgFoto"
+                        android:layout_marginLeft="-40dp"
+                        android:layout_marginTop="-45dp"
+                        android:layout_toRightOf="@+id/imgFoto"
                         android:background="@android:color/transparent"
-                        android:gravity="right"
-                        android:inputType="number"
-                        android:textSize="15sp" />
+                        android:src="@drawable/ic_kamera" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Joko Susilo"
+                    android:textColor="@color/blue"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/nama">
+
+                        <EditText
+                            android:id="@+id/etNama"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:inputType="textPersonName"
+                            android:text="Joso Susilo"
+                            android:textColor="@android:color/black" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <Button
+                        android:id="@+id/btEditNama"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:background="@android:color/transparent"
+                        android:minHeight="10dp"
+                        android:minWidth="50dp"
+                        android:text="@string/edit"
+                        android:textAllCaps="false"
+                        android:textColor="@color/blue" />
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/nomor_telepon">
+
+                        <EditText
+                            android:id="@+id/etNoTelp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:inputType="phone"
+                            android:text="08123456789"
+                            android:textColor="@android:color/black" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <Button
+                        android:id="@+id/btEditNoTelp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:background="@android:color/transparent"
+                        android:minHeight="10dp"
+                        android:minWidth="50dp"
+                        android:text="@string/edit"
+                        android:textAllCaps="false"
+                        android:textColor="@color/blue" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/alamat_email">
+
+                        <EditText
+                            android:id="@+id/etEmail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginTop="55dp"
+                            android:background="@android:color/transparent"
+                            android:inputType="textEmailAddress"
+                            android:text="Email.mk@gmail.com"
+                            android:textColor="@android:color/black" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <Button
+                        android:id="@+id/btEditEmail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:background="@android:color/transparent"
+                        android:minHeight="10dp"
+                        android:minWidth="50dp"
+                        android:text="@string/edit"
+                        android:textAllCaps="false"
+                        android:textColor="@color/blue" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/password"
+                        app:passwordToggleEnabled="true">
+
+                        <EditText
+                            android:id="@+id/etPassword"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:inputType="textPassword"
+                            android:text="tests"
+                            android:textColor="@android:color/black" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <Button
+                        android:id="@+id/btPassword"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:background="@android:color/transparent"
+                        android:minHeight="10dp"
+                        android:minWidth="50dp"
+                        android:text="@string/edit"
+                        android:textAllCaps="false"
+                        android:textColor="@color/blue" />
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/linAct"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/btCancel"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="40sp"
+                        android:background="@drawable/ripple_effect_biru"
+                        android:text="@string/batal"
+                        android:layout_marginRight="10dp"
+                        android:inputType="textCapWords"
+                        android:textColor="@color/white" />
+
+                    <Button
+                        android:id="@+id/btSave"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:inputType="textCapWords"
+                        android:layout_height="40sp"
+                        android:background="@drawable/ripple_effect_biru"
+                        android:text="@string/simpan"
+                        android:textColor="@color/white" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/rounded_bg_biru"
+                    android:orientation="horizontal"
+                    android:padding="15dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/saldo"
+                        android:textColor="@android:color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/rounded_bg_putih"
+                        android:padding="5dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:text="Rp."
+                            android:textColor="@color/blue"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:id="@+id/txSaldo"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="5dp"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:text="2.000.000,-"
+                            android:textColor="@color/blue"
+                            android:textSize="15sp" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/rounded_bg_biru"
+                    android:orientation="horizontal"
+                    android:padding="15dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/tarik_dana"
+                        android:textColor="@android:color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/rounded_bg_putih"
+                        android:padding="5dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:text="Rp."
+                            android:textSize="15sp" />
+
+                        <EditText
+                            android:id="@+id/etTarikDana"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="5dp"
+                            android:layout_weight="1"
+                            android:background="@android:color/transparent"
+                            android:gravity="right"
+                            android:inputType="number"
+                            android:textSize="15sp" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btTarik"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="30dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/rounded_bg_btn_biru"
+                    android:minHeight="0dp"
+                    android:paddingBottom="7dp"
+                    android:paddingLeft="40dp"
+                    android:paddingRight="40dp"
+                    android:paddingTop="7dp"
+                    android:text="@string/tarik"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white" />
 
             </LinearLayout>
 
-            <Button
-                android:layout_marginBottom="30dp"
-                android:id="@+id/btTarik"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/rounded_bg_btn_biru"
-                android:minHeight="0dp"
-                android:paddingBottom="7dp"
-                android:paddingLeft="40dp"
-                android:paddingRight="40dp"
-                android:paddingTop="7dp"
-                android:text="@string/tarik"
-                android:textAllCaps="false"
-                android:textColor="@android:color/white" />
+        </ScrollView>
+    </android.support.v4.widget.SwipeRefreshLayout>
 
-        </LinearLayout>
-
-    </ScrollView>
 
 </LinearLayout>

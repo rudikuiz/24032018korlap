@@ -38,16 +38,18 @@ public class CollectorListAdapter extends RecyclerView.Adapter<CollectorListAdap
     }
 
     @Override
-    public void onBindViewHolder(ColHolder holder, int position) {
+    public void onBindViewHolder(ColHolder holder, final int position) {
         int nomer= position +1;
-        holder.etNumber.setText(nomer);
+        holder.etNumber.setText(String.valueOf(nomer));
         holder.etNama.setText(arrayList.get(position).getNama());
         holder.etJmlCol.setText(arrayList.get(position).getJmlcol());
         holder.etJmlSur.setText(arrayList.get(position).getJmlsur());
+
         holder.etDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
             Intent intent = new Intent(context, DetailCollector.class);
+            intent.putExtra("kar_id", arrayList.get(position).getKar_id());
             context.startActivity(intent);
             }
         });

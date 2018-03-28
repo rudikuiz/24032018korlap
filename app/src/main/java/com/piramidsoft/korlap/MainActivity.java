@@ -1,5 +1,8 @@
 package com.piramidsoft.korlap;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -17,6 +20,9 @@ import com.piramidsoft.korlap.fragments.Profile;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
+import static com.piramidsoft.korlap.Config.http.TAG_ID;
+import static com.piramidsoft.korlap.Config.http.TAG_USERNAME;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -53,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
     TextView text5;
     @BindView(R.id.lin5)
     LinearLayout lin5;
+    SharedPreferences sharedpreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         NavigationBottom();
+        sharedpreferences = getSharedPreferences(LoginPage.my_shared_preferences, Context.MODE_PRIVATE);
     }
 
     private void NavigationBottom() {
@@ -104,7 +112,15 @@ public class MainActivity extends AppCompatActivity {
         lin5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "Logout", Toast.LENGTH_SHORT).show();
+                SharedPreferences.Editor editor = sharedpreferences.edit();
+                editor.putBoolean(LoginPage.session_status, false);
+                editor.putString(TAG_ID, null);
+                editor.putString(TAG_USERNAME, null);
+                editor.commit();
+
+                Intent intent = new Intent(MainActivity.this, LoginPage.class);
+                finish();
+                startActivity(intent);
             }
         });
 

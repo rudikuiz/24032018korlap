@@ -1,5 +1,8 @@
 package com.piramidsoft.korlap.menus;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -19,6 +22,7 @@ import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.piramidsoft.korlap.LoginPage;
 import com.piramidsoft.korlap.R;
 import com.piramidsoft.korlap.Setting.OwnProgressDialog;
 import com.piramidsoft.korlap.adapters.ColSurveyAdapter;
@@ -37,6 +41,7 @@ import butterknife.ButterKnife;
 
 import static com.piramidsoft.korlap.Config.AppConf.URL_GET_ALL;
 import static com.piramidsoft.korlap.Config.AppConf.URL_GET_DETAIL;
+import static com.piramidsoft.korlap.Config.http.TAG_MEMBER_ID_KARYAWAN;
 
 public class DetailCollector extends AppCompatActivity {
 
@@ -58,23 +63,33 @@ public class DetailCollector extends AppCompatActivity {
     StringRequest stringRequest;
     @BindView(R.id.etAlamat)
     TextView etAlamat;
-    private ArrayList<ListModel> arrayList = new ArrayList<>();
+    private ArrayList<ListModel> collectionLM = new ArrayList<>();
+    private ArrayList<ListModel> surveyLM = new ArrayList<>();
     OwnProgressDialog loading;
     OwnProgressDialog progressDialog;
     private final int MY_SOCKET_TIMEOUT_MS = 10 * 1000;
+    SharedPreferences sharedpreferences;
+    String member_id_kry, kar_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_collector);
         ButterKnife.bind(this);
+        sharedpreferences = getSharedPreferences(LoginPage.my_shared_preferences, Context.MODE_PRIVATE);
+        member_id_kry = sharedpreferences.getString(TAG_MEMBER_ID_KARYAWAN, "");
+        Intent intent = getIntent();
+        kar_id = intent.getStringExtra("kar_id");
 
         GridLayoutManager manager = new GridLayoutManager(DetailCollector.this, 1,
                 GridLayoutManager.VERTICAL, false);
         rvCollector.setLayoutManager(manager);
-        rvSurvey.setLayoutManager(manager);
-        requestQueue = Volley.newRequestQueue(DetailCollector.this);
 
+        GridLayoutManager manager2 = new GridLayoutManager(DetailCollector.this, 1,
+                GridLayoutManager.VERTICAL, false);
+        rvSurvey.setLayoutManager(manager2);
+
+        requestQueue = Volley.newRequestQueue(DetailCollector.this);
         loading = new OwnProgressDialog(DetailCollector.this);
 
         loading.show();
@@ -85,131 +100,62 @@ public class DetailCollector extends AppCompatActivity {
 
             }
         });
-        getJSONCol();
 
         Swipe2.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                getJSONSurvey();
+                getJSONCol();
             }
         });
 
-        getJSONSurvey();
-        load();
+        getJSONCol();
+
     }
 
     private void getJSONCol() {
+        collectionLM.clear();
+        surveyLM.clear();
 
-        arrayList = new ArrayList<ListModel>();
-
-        stringRequest = new StringRequest(Request.Method.GET, URL_GET_ALL + "nothing", new Response.Listener<String>() {
+        stringRequest = new StringRequest(Request.Method.GET, "http://118.98.64.44/korlap/detail_collector.php?member_id_karyawan=" + member_id_kry + "&" + "kar_id=" + kar_id, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Log.d("response: ", response);
-                try {
-                    JSONArray jsonArray = new JSONArray(response);
-                    for (int a = 0; a < jsonArray.length(); a++) {
-                        JSONObject json = jsonArray.getJSONObject(a);
-                        ListModel modelMenu = new ListModel();
-                        modelMenu.setNama(json.getString("nama"));
-                        modelMenu.setStatus(json.getString("status"));
-                        arrayList.add(modelMenu);
-                    }
-
-                    CollectionAdapter adapter = new CollectionAdapter(arrayList, DetailCollector.this);
-                    rvCollector.setAdapter(adapter);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-                loading.dismiss();
-                if (Swipe != null) {
-                    Swipe.setRefreshing(false);
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                if (error instanceof TimeoutError) {
-                    Toast.makeText(DetailCollector.this, "timeout", Toast.LENGTH_SHORT).show();
-                } else if (error instanceof NoConnectionError) {
-                    Toast.makeText(DetailCollector.this, "no connection", Toast.LENGTH_SHORT).show();
-                }
-                Toast.makeText(getApplicationContext(),
-                        error.getMessage(), Toast.LENGTH_LONG).show();
-                loading.dismiss();
-                if (Swipe != null) {
-                    Swipe.setRefreshing(false);
-                }
-            }
-        });
-        requestQueue.add(stringRequest);
-    }
-
-    private void getJSONSurvey() {
-
-        arrayList = new ArrayList<ListModel>();
-
-        stringRequest = new StringRequest(Request.Method.GET, URL_GET_ALL + "nothing", new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                Log.d("response: ", response);
-                try {
-                    JSONArray jsonArray = new JSONArray(response);
-                    for (int a = 0; a < jsonArray.length(); a++) {
-                        JSONObject json = jsonArray.getJSONObject(a);
-                        ListModel modelMenu = new ListModel();
-                        modelMenu.setNama(json.getString("nama"));
-                        modelMenu.setStatus(json.getString("status"));
-
-                        arrayList.add(modelMenu);
-                    }
-
-                    ColSurveyAdapter adapter = new ColSurveyAdapter(arrayList, DetailCollector.this);
-                    rvSurvey.setAdapter(adapter);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-                loading.dismiss();
-                if (Swipe != null) {
-                    Swipe.setRefreshing(false);
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                if (error instanceof TimeoutError) {
-                    Toast.makeText(DetailCollector.this, "timeout", Toast.LENGTH_SHORT).show();
-                } else if (error instanceof NoConnectionError) {
-                    Toast.makeText(DetailCollector.this, "no connection", Toast.LENGTH_SHORT).show();
-                }
-                Toast.makeText(getApplicationContext(),
-                        error.getMessage(), Toast.LENGTH_LONG).show();
-                loading.dismiss();
-                if (Swipe != null) {
-                    Swipe.setRefreshing(false);
-                }
-            }
-        });
-        requestQueue.add(stringRequest);
-    }
-
-    private void load() {
-        progressDialog.show();
-        stringRequest = new StringRequest(Request.Method.GET, URL_GET_DETAIL + "nothing", new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                Log.d("datakuz", response);
                 try {
                     JSONObject jsonObject = new JSONObject(response);
-                    JSONArray jsonArray = jsonObject.getJSONArray("client");
+                    JSONArray jsonArray = jsonObject.getJSONArray("penagihan");
                     for (int a = 0; a < jsonArray.length(); a++) {
                         JSONObject json = jsonArray.getJSONObject(a);
+                        ListModel modelMenu = new ListModel();
+                        modelMenu.setNama(json.getString("cli_nama_lengkap"));
+                        modelMenu.setStatus(json.getString("cli_status"));
+                        modelMenu.setCli_id(json.getString("cli_id"));
+                        collectionLM.add(modelMenu);
+                    }
+
+                    CollectionAdapter adapter = new CollectionAdapter(collectionLM, DetailCollector.this);
+                    rvCollector.setAdapter(adapter);
+
+
+                    JSONArray jsonArray2 = jsonObject.getJSONArray("survey");
+                    for (int a = 0; a < jsonArray2.length(); a++) {
+                        JSONObject json = jsonArray2.getJSONObject(a);
+                        ListModel modelMenu = new ListModel();
+                        modelMenu.setNama(json.getString("cli_nama_lengkap"));
+                        modelMenu.setStatus(json.getString("cli_status"));
+                        modelMenu.setCli_id(json.getString("cli_id"));
+                        surveyLM.add(modelMenu);
+                    }
+
+                    ColSurveyAdapter adapters = new ColSurveyAdapter(surveyLM, DetailCollector.this);
+                    rvSurvey.setAdapter(adapters);
+
+                    JSONArray jsonArray3 = jsonObject.getJSONArray("detail");
+                    for (int a = 0; a < jsonArray3.length(); a++) {
+                        JSONObject json = jsonArray3.getJSONObject(a);
                         ClientModel dataClient = new ClientModel();
-                        dataClient.setNama(json.getString("cli_nama_lengkap"));
-                        dataClient.setNohp(json.getString("cli_handphone"));
-                        dataClient.setAlamat(json.getString("cli_alamat"));
+                        dataClient.setNama(json.getString("kar_namalengkap"));
+                        dataClient.setNohp(json.getString("kar_telpon"));
+                        dataClient.setAlamat(json.getString("kar_alamat"));
 
                         etNama.setText("Nama : " + dataClient.getNama());
                         etNoHP.setText("No HP : "+dataClient.getNohp());
@@ -217,16 +163,19 @@ public class DetailCollector extends AppCompatActivity {
 
                     }
 
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
 
-                progressDialog.dismiss();
+                loading.dismiss();
+                if (Swipe != null) {
+                    Swipe.setRefreshing(false);
+                }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                progressDialog.dismiss();
                 if (error instanceof TimeoutError) {
                     Toast.makeText(DetailCollector.this, "timeout", Toast.LENGTH_SHORT).show();
                 } else if (error instanceof NoConnectionError) {
@@ -234,15 +183,12 @@ public class DetailCollector extends AppCompatActivity {
                 }
                 Toast.makeText(getApplicationContext(),
                         error.getMessage(), Toast.LENGTH_LONG).show();
-
+                loading.dismiss();
+                if (Swipe != null) {
+                    Swipe.setRefreshing(false);
+                }
             }
         });
-
-        stringRequest.setRetryPolicy(new DefaultRetryPolicy(
-                MY_SOCKET_TIMEOUT_MS,
-                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         requestQueue.add(stringRequest);
     }
-
 }

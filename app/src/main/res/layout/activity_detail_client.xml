@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.piramidsoft.korlap.menus.DetailClientPenagihan">
+    tools:context="com.piramidsoft.korlap.menus.DetailClient">
 
     <RelativeLayout
         android:id="@+id/rl"
@@ -24,14 +25,14 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
             android:paddingBottom="5dp"
-            android:text="Detail Klien Penagihan"
+            android:text="Detail Client Collector"
             android:textColor="@color/white"
             android:textSize="16sp"
             android:textStyle="bold" />
     </RelativeLayout>
 
     <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/swipeKlienPenagihan"
+        android:id="@+id/swipeKlienSurvey"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -55,7 +56,8 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="2"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -240,53 +242,9 @@
 
             </LinearLayout>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1">
-
-                <LinearLayout
-                    android:id="@+id/linearLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/border_gray"
-                    android:padding="5dp">
-
-                    <Spinner
-                        android:id="@+id/spinCol"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                    </Spinner>
-                </LinearLayout>
-
-                <Button
-                    android:id="@+id/btNotes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_alignEnd="@+id/linearLayout"
-                    android:layout_below="@+id/linearLayout"
-                    android:layout_marginTop="5dp"
-                    android:background="@drawable/md_button_border_ijo"
-                    android:text="@string/notes"
-                    android:textColor="@color/button" />
-
-                <Button
-                    android:id="@+id/btSimpan"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_below="@+id/btNotes"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:background="@drawable/ripple_effect_biru"
-                    android:padding="10dp"
-                    android:text="@string/simpan"
-                    android:textColor="@color/white" />
-            </RelativeLayout>
         </LinearLayout>
+
     </android.support.v4.widget.SwipeRefreshLayout>
+
 
 </LinearLayout>

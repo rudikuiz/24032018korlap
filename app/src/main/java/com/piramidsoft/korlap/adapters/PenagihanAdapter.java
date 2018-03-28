@@ -39,7 +39,7 @@ public class PenagihanAdapter extends RecyclerView.Adapter<PenagihanAdapter.Pena
     }
 
     @Override
-    public void onBindViewHolder(PenagihanHolder holder, int position) {
+    public void onBindViewHolder(PenagihanHolder holder, final int position) {
         int nomer= position +1;
 
         holder.number.setText(String.valueOf(nomer));
@@ -49,6 +49,8 @@ public class PenagihanAdapter extends RecyclerView.Adapter<PenagihanAdapter.Pena
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, DetailClientPenagihan.class);
+                intent.putExtra("cli_id", arrayList.get(position).getCli_id());
+                intent.putExtra("pengajuan_id", arrayList.get(position).getPengajuan_id());
                 context.startActivity(intent);
             }
         });

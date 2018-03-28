@@ -77,10 +77,10 @@
                 </RelativeLayout>
 
                 <TextView
+                    android:id="@+id/txNama"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Joko Susilo"
                     android:textColor="@color/blue"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -101,7 +101,6 @@
                             android:layout_height="wrap_content"
                             android:background="@android:color/transparent"
                             android:inputType="textPersonName"
-                            android:text="Joso Susilo"
                             android:textColor="@android:color/black" />
 
                     </android.support.design.widget.TextInputLayout>
@@ -137,7 +136,6 @@
                             android:layout_height="wrap_content"
                             android:background="@android:color/transparent"
                             android:inputType="phone"
-                            android:text="08123456789"
                             android:textColor="@android:color/black" />
 
                     </android.support.design.widget.TextInputLayout>
@@ -175,7 +173,6 @@
                             android:layout_marginTop="55dp"
                             android:background="@android:color/transparent"
                             android:inputType="textEmailAddress"
-                            android:text="Email.mk@gmail.com"
                             android:textColor="@android:color/black" />
                     </android.support.design.widget.TextInputLayout>
 
@@ -210,7 +207,6 @@
                             android:layout_height="wrap_content"
                             android:background="@android:color/transparent"
                             android:inputType="textPassword"
-                            android:text="tests"
                             android:textColor="@android:color/black" />
 
                     </android.support.design.widget.TextInputLayout>

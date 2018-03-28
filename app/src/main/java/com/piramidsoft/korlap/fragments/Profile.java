@@ -102,6 +102,10 @@ public class Profile extends Fragment {
     LinearLayout linAct;
     @BindView(R.id.btCamera)
     ImageButton btCamera;
+    @BindView(R.id.txNama)
+    TextView txNama;
+
+
     private OwnProgressDialog progressDialog;
     private RequestQueue requestQueue;
     private StringRequest stringRequest;
@@ -163,6 +167,7 @@ public class Profile extends Fragment {
             public void onResponse(String response) {
                 try {
 
+                    Log.d("Profilx", response + " XX");
                     JSONArray jsonArray = new JSONArray(response);
                     for (int a = 0; a < jsonArray.length(); a++) {
                         JSONObject json = jsonArray.getJSONObject(a);
@@ -172,10 +177,11 @@ public class Profile extends Fragment {
                         karyawan.setEmail(json.getString("kar_email_winwin"));
                         karyawan.setPass(json.getString("kar_email_password"));
 
+                        txNama.setText(karyawan.getNama());
                         etNama.setText(karyawan.getNama());
                         etNoTelp.setText(karyawan.getNotelp());
                         etEmail.setText(karyawan.getEmail());
-                        etPassword.setText(karyawan.getPass());
+//                        etPassword.setText(karyawan.getPass());
 
                     }
 
@@ -259,9 +265,16 @@ public class Profile extends Fragment {
                 params.put("kar_namalengkap", etNama.getText().toString());
                 params.put("kar_no_telepon", etNoTelp.getText().toString());
                 params.put("kar_email_winwin", etEmail.getText().toString());
-                params.put("member_pass", etPassword.getText().toString());
-                params.put("kar_foto_selfi", getStringImage(decoded));
+                if (!etPassword.getText().toString().isEmpty()) {
+                    params.put("member_pass", etPassword.getText().toString());
+                }
+                if (decoded != null) {
+                    params.put("kar_foto_selfi", getStringImage(decoded));
+                }
                 params.put("kar_id", Karid);
+
+                Log.d("PFPARAM", params.toString());
+
                 return params;
             }
 
